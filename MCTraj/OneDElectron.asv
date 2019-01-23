@@ -1,0 +1,40 @@
+
+    q = 1.60217653e-19;             % electron charge
+    m = 9.10938215e-31;             % electron mass
+    
+    OV = 0; %%initial velocity
+    OP = 0; %%initial position
+    field = 1;
+    
+    t=0.01;
+    
+    for i=0:100
+        force = q*field;
+        v = (OV + force/m*t);
+        OV = v;
+        P = OP + v/t;     
+        OP = P;
+        dF = P/i;
+        figure(1);
+        hold on;
+        plot(i,v, 'b*');
+        pause(0.1);
+        xlabel('time');
+        ylabel('Velocity');
+        figure(2);
+        hold on;
+        plot(i,P, 'b*');
+        pause(0.1);
+        xlabel('time');
+        ylabel('Position');
+        title('Drift Velocity: ', dF);
+        grid on
+    end
+    
+    
+    
+    plot(v,y);
+    
+    xlabel('v');
+    ylabel('y');
+    grid on
